@@ -228,12 +228,52 @@
 // // img.src = 'https://picsum.photos/200/300';
 // // imgContainer.append(img);
 
-//   Micro Que destrotate  //
-//  //
+//   Micro Que demonstarte  //
+//  ///////--------------------------------------------------/////////////////
+
+// console.log('test 1');
+// setTimeout(() => console.log('time out'), 0);
+// Promise.resolve('resolve').then(() => console.log('promise resolve'));
+// console.log('test 3');
+// for (let i = 0; i < 1000000000; i++) {}
+// console.log('timer ');
+
+////////////////////////////////////////////////
+/// ////////////////////////////////////Bulid Own Promise ///
+// with new Promise constructor
+// const lott = new Promise(function (resolve, reject) {
+//   if (Math.random() > 0.5) {
+//     resolve(' You win');
+//   } else {
+//     reject(new Error('You lose'));
+//   }
+// });
+// lott.then(r => console.log(r));
+
+// console.log('test 1');
+// setTimeout(() => console.log('time out'), 0);
+// Promise.resolve('Promice resolve').then(e => console.log(e));
+// console.log('test 3');
+// for (let i = 0; i < 1000000000; i++) {}
+// console.log('looooop end');
+
+////////////////////////////////////////////////
+/// ////////////////////////////////////Bulid Own Promise  with asychronasway////////////////////////////////////////
+
+const lott2 = new Promise(function (resolve, reject) {
+  setTimeout(() => {
+    if (Math.random() > 0.5) {
+      resolve(' You win');
+    } else {
+      reject(new Error('You lose'));
+    }
+  }, 2000);
+});
+lott2.then(r => console.log(r));
 
 console.log('test 1');
 setTimeout(() => console.log('time out'), 0);
-Promise.resolve('resolve').then(() => console.log('promise resolve'));
+Promise.resolve('Promice resolve').then(e => console.log(e));
 console.log('test 3');
 for (let i = 0; i < 1000000000; i++) {}
-console.log('timer ');
+console.log('looooop end');
