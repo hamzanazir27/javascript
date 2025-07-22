@@ -1,6 +1,6 @@
 'use strict';
 
-// const btn = document.querySelector('.btn-country');
+const btn = document.querySelector('.btn-country');
 // const countriesContainer = document.querySelector('.countries');
 
 // const img = document.querySelector('.img');
@@ -260,20 +260,92 @@
 ////////////////////////////////////////////////
 /// ////////////////////////////////////Bulid Own Promise  with asychronasway////////////////////////////////////////
 
-const lott2 = new Promise(function (resolve, reject) {
-  setTimeout(() => {
-    if (Math.random() > 0.5) {
-      resolve(' You win');
-    } else {
-      reject(new Error('You lose'));
-    }
-  }, 2000);
-});
-lott2.then(r => console.log(r));
+// const lott2 = new Promise(function (resolve, reject) {
+//   setTimeout(() => {
+//     if (Math.random() > 0.5) {
+//       resolve(' You win');
+//     } else {
+//       reject(new Error('You lose'));
+//     }
+//   }, 2000);
+// });
+// lott2.then(r => console.log(r));
 
-console.log('test 1');
-setTimeout(() => console.log('time out'), 0);
-Promise.resolve('Promice resolve').then(e => console.log(e));
-console.log('test 3');
-for (let i = 0; i < 1000000000; i++) {}
-console.log('looooop end');
+// console.log('test 1');
+// setTimeout(() => console.log('time out'), 0);
+// Promise.resolve('Promice resolve').then(e => console.log(e));
+// console.log('test 3');
+// for (let i = 0; i < 1000000000; i++) {}
+// console.log('looooop end');
+
+///////////////////////////////////  Promising The Geolocation API /////////////////////////
+// const getPo = function () {
+//   return new Promise(function (res, rej) {
+//     throw new Error('Geolocation not supported by your browser');
+//     navigator.geolocation.getCurrentPosition(res, rej);
+//   });
+// };
+
+// getPo()
+//   .then(position => {
+//     console.log(position);
+//   })
+//   .catch(err => {
+//     console.error(err);
+//   });
+
+// console.log('helo');
+
+//////////////////////////////////////////////////////////////////////////
+/// //////////////////////Aysnc / awit
+// ///////////////////////////////////////////////////////////////////////
+// const func = async function () {
+//   try {
+//     const position = await getPo();
+//     console.log(position);
+//   } catch (err) {
+//     console.error(err);
+//   }
+// };
+
+// func();
+
+// const getPo = async function () {
+//   try {
+//     const position = await new Promise(function (res, rej) {
+//       if (!navigator.geolocation) {
+//         rej(new Error('Geolocation not supported by your browser'));
+//       } else {
+//         navigator.geolocation.getCurrentPosition(res, rej);
+//       }
+//     });
+//     return position;
+//   } catch (err) {
+//     console.log('error in getPo function: ', err);
+//     // err;
+//     throw err; // rethrow the error to be handled by the caller
+//   }
+// };
+
+//bad practice to use async/await outside of an async function
+// const MycurrentPosition = getPo()
+//   .then(position => {
+//     const { latitude: lat, longitude: lng } = position.coords;
+//     return { lat, lng };
+//   })
+//   .catch(err => {
+//     console.log('err');
+//   });
+
+// console.log(MycurrentPosition);
+
+//best practice to use async/await inside an async function
+// (async function () {
+//   try {
+//     const position = await getPo();
+//     const { latitude: lat, longitude: lng } = position.coords;
+//     console.log(`Latitude: ${lat}, Longitude: ${lng}`);
+//   } catch (err) {
+//     console.error('Error getting position:', err);
+//   }
+// })();
