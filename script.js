@@ -349,3 +349,75 @@ const btn = document.querySelector('.btn-country');
 //     console.error('Error getting position:', err);
 //   }
 // })();
+
+//////////////////////////////////////////////////////////////////////////
+/// //////////////////////Running Promise in Parallel
+// ///////////////////////////////////////////////////////////////////////
+//with Promise.all
+// ✅ Step 1: Function define karo
+async function getFetch(url) {
+  const response = await fetch(url);
+  //   if (!response.ok) throw new Error('Failed to fetch data');
+  return await response.json();
+}
+
+// ✅ Step 2: Main IIFE function
+// (async function () {
+//   try {
+//     const england = await getFetch(
+//       'https://restcountries.com/v3.1/name/united%20kingdom'
+//     );
+//     const pakistan = await getFetch(
+//       'https://restcountries.com/v3.1/name/pakistan'
+//     );
+
+//     console.log([england[0], pakistan[0]]);
+//   } catch (err) {
+//     console.error('Error:', err.message);
+//   }
+// })();
+
+//Promise.all
+// (async function () {
+//   try {
+//     const countries = await Promise.all[
+//       (getFetch('https://restcountries.com/v3.1/name/united%20kingdom'),
+//       getFetch('https://restcountries.com/v3.1/name/pakistan'))
+//     ];
+
+//     console.log(countries);
+//   } catch (err) {
+//     console.error('Error:', err.message);
+//   }
+// })();
+//promise.race  // jese hi setle hoga first promise ka result aa jayega
+// Promise chehe resolve ho ya reject ho
+// (async function () {
+//   try {
+//     const countries = await Promise.race[
+//       (getFetch('https://restcountries.com/v3.1/name/united%20kingdom'),
+//       getFetch('https://restcountries.com/v3.1/name/pakistan11'))
+//     ];
+
+//     console.log(countries);
+//   } catch (err) {
+//     console.error('Error:', err.message);
+//   }
+// })();async function getFetch(url) {
+//   const response = await fetch(url);
+//   if (!response.ok) throw new Error('Failed to fetch data');
+//   return await response.json();
+// }
+
+(async function () {
+  try {
+    const countries = await Promise.any([
+      getFetch('https://restcountries.com/v3.1/name/united%20kingdooom'),
+      getFetch('https://restcountries.com/v3.1/name/pakistan'),
+    ]);
+
+    console.log('First Success Country Data:', ...countries);
+  } catch (err) {
+    console.error('Error:', err.message);
+  }
+})();
